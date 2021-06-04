@@ -1,0 +1,280 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = 'Part'#237'culas'
+  ClientHeight = 544
+  ClientWidth = 733
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object lytMesh: TLayout
+    Align = Client
+    Padding.Left = 10.000000000000000000
+    Padding.Top = 10.000000000000000000
+    Padding.Right = 10.000000000000000000
+    Padding.Bottom = 10.000000000000000000
+    Size.Width = 484.000000000000000000
+    Size.Height = 544.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object PaintBox: TPaintBox
+      Align = Client
+      Anchors = [akLeft, akTop, akBottom]
+      Size.Width = 464.000000000000000000
+      Size.Height = 524.000000000000000000
+      Size.PlatformDefault = False
+      OnPainting = PaintBoxPainting
+      OnPaint = PaintBoxPaint
+    end
+  end
+  object lytControls: TLayout
+    Align = MostRight
+    Padding.Left = 10.000000000000000000
+    Padding.Top = 10.000000000000000000
+    Padding.Right = 10.000000000000000000
+    Padding.Bottom = 10.000000000000000000
+    Position.X = 484.000000000000000000
+    Size.Width = 249.000000000000000000
+    Size.Height = 544.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object lytColor: TLayout
+      Align = Top
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 315.000000000000000000
+      Size.Width = 229.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object lbColor: TLabel
+        Align = Bottom
+        Position.X = 10.000000000000000000
+        Position.Y = 1.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Color'
+        TabOrder = 0
+      end
+      object cbColor: TComboColorBox
+        Align = Bottom
+        Color = claBlack
+        Position.X = 10.000000000000000000
+        Position.Y = 18.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 22.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 6
+      end
+    end
+    object lytDistance: TLayout
+      Align = Top
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 195.000000000000000000
+      Size.Width = 229.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 3
+      object lbDistance: TLabel
+        Align = Bottom
+        Position.X = 10.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Distance: 0,005'
+        TabOrder = 1
+      end
+      object trkDistance: TTrackBar
+        Align = Bottom
+        CanParentFocus = True
+        Max = 0.000000999999997475
+        Orientation = Horizontal
+        Position.X = 10.000000000000000000
+        Position.Y = 21.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 19.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Value = 0.000000999999997475
+        OnTracking = trkDistanceTracking
+      end
+    end
+    object lytMaxSpeed: TLayout
+      Align = Top
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 135.000000000000000000
+      Size.Width = 229.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      object lbMaxSpeed: TLabel
+        Align = Bottom
+        Position.X = 10.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Max. Speed: 0,1'
+        TabOrder = 1
+      end
+      object trkMaxSpeed: TTrackBar
+        Align = Bottom
+        CanParentFocus = True
+        Max = 1.000000000000000000
+        Orientation = Horizontal
+        Position.X = 10.000000000000000000
+        Position.Y = 21.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 19.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Value = 0.100000001490116100
+        OnTracking = trkMaxSpeedTracking
+      end
+    end
+    object lytParticles: TLayout
+      Align = Top
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 15.000000000000000000
+      Size.Width = 229.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 7
+      object trkParticles: TTrackBar
+        Align = Bottom
+        CanParentFocus = True
+        Max = 1000.000000000000000000
+        Orientation = Horizontal
+        Position.X = 10.000000000000000000
+        Position.Y = 21.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 19.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Value = 100.000000000000000000
+        OnTracking = trkParticlesTracking
+      end
+      object lbParticles: TLabel
+        Align = Bottom
+        Position.X = 10.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Particles: 100'
+        TabOrder = 1
+      end
+    end
+    object lytSpeed: TLayout
+      Align = Top
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 75.000000000000000000
+      Size.Width = 229.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 6
+      object lbSpeed: TLabel
+        Align = Bottom
+        Position.X = 10.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Speed: 0,1'
+        TabOrder = 1
+      end
+      object trkSpeed: TTrackBar
+        Align = Bottom
+        CanParentFocus = True
+        Max = 1.000000000000000000
+        Orientation = Horizontal
+        Position.X = 10.000000000000000000
+        Position.Y = 21.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 19.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Value = 0.100000001490116100
+        OnTracking = trkSpeedTracking
+      end
+    end
+    object lytThickness: TLayout
+      Align = Top
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 255.000000000000000000
+      Size.Width = 229.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object lbThickness: TLabel
+        Align = Bottom
+        Position.X = 10.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Thickness: 1'
+        TabOrder = 1
+      end
+      object trkThickness: TTrackBar
+        Align = Bottom
+        CanParentFocus = True
+        Max = 10.000000000000000000
+        Orientation = Horizontal
+        Position.X = 10.000000000000000000
+        Position.Y = 21.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 19.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Value = 1.000000000000000000
+        OnTracking = trkThicknessTracking
+      end
+    end
+  end
+  object Timer: TTimer
+    Interval = 30
+    OnTimer = TimerTimer
+    Left = 592
+    Top = 392
+  end
+end
