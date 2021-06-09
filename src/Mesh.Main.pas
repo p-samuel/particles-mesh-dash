@@ -17,9 +17,10 @@ type
   TLineList = Array of TLine;
 
   TParticle = record
-    Pos,
+    Pos, Pos2,
     Dir: TPointF;
     Vel: Single;
+    gVel: Single;
     Avaiable: Boolean;
     function CircleRec(const aRect: TRectF): TRectF;
   end;
@@ -49,6 +50,9 @@ type
     lbThickness: TLabel;
     trkThickness: TTrackBar;
     Timer: TTimer;
+    Layout1: TLayout;
+    lbGravity: TLabel;
+    trkGravity: TTrackBar;
     procedure trkParticlesTracking(Sender: TObject);
     procedure trkSpeedTracking(Sender: TObject);
     procedure trkDistanceTracking(Sender: TObject);
@@ -59,6 +63,7 @@ type
       const ARect: TRectF);
     procedure PaintBoxPaint(Sender: TObject; Canvas: TCanvas);
     procedure FormCreate(Sender: TObject);
+    procedure trkGravityTracking(Sender: TObject);
     public
       Pal: TParticleList;
       Lil: TLineList;
@@ -84,23 +89,27 @@ function TParticle.CircleRec(const aRect: TRectF): TRectF;
 var P: TPointF;
   S, U: Single;
 begin
-  P := aRect.CenterPoint + Pos * aRect.BottomRight;
-  Result := TRectF.Empty;
-  Result.Location := P;
-  U := 3 / 1800;
-  S := U * aRect.BottomRight.Length;
-  S := ((1 - Vel) + 1E-2) * S;
-  Result.Inflate(S, S);
+  if Vel <> 0 then
+  begin
+    P := aRect.CenterPoint + Pos * aRect.BottomRight;
+    Result := TRectF.Empty;
+    Result.Location := P;
+    U := 3 / 1800;
+    S := U * aRect.BottomRight.Length;
+    S := ((1 - Vel) + 1E-2) * S;
+    Result.Inflate(S, S);
+  end;
 end;
 
 { TFormMain }
 
 procedure TFormMain.CalcUpdate;
 var Anz, I, A, B: Integer;
-  Dis, Spe, SpeVal, L: Single;
+  g, Dis, Spe, SpeVal, L: Single;
   P, N: TParticle;
   U: TLine;
   K: TPointF;
+
 begin
 
   if IsCalc then Exit;
@@ -111,6 +120,7 @@ begin
     Spe := trkSpeed.Value;
     Dis := 1E-6 + trkDistance.Value;
     SpeVal := trkSpeed.Value;
+    g := trkGravity.Value;
     
     SetLength(Pal, Anz);
     for i := Low(Pal) to High(Pal) do
@@ -128,7 +138,12 @@ begin
             if K.X < -0.5 then X := Abs(X);
             if K.Y < -0.5 then Y := Abs(Y);
           end;
+          Pos2 := Pos;
           Pos := Pos + Dir * (Vel * SpeVal);
+          gVel := Vel;
+          Vel := Sqrt(Power(gVel, 2) + 2 * g * (Pos - Pos2).Length);
+          Pos := Pos + Dir * (Vel * SpeVal )  ;
+
         end else begin
           Pos := TPointF.Create(0.5 - Random, 0.5 - Random);
           Dir := TPointF.Create(0.5 - Random, 0.5 - Random)/10;
@@ -184,6 +199,7 @@ begin
  trkParticlesTracking(nil);
  trkSpeedTracking(nil);
  trkThicknessTracking(nil);
+ trkGravityTracking(nil);
 end;
 
 procedure TFormMain.PaintBoxPaint(Sender: TObject; Canvas: TCanvas);
@@ -247,6 +263,11 @@ procedure TFormMain.trkDistanceTracking(Sender: TObject);
 var L: Single; S: String;
 begin
   lbDistance.Text := Format('Distance: %.3f', [trkDistance.Value]);
+end;
+
+procedure TFormMain.trkGravityTracking(Sender: TObject);
+begin
+  lbGravity.Text := Format('Gravity: %.3f', [trkGravity.Value])
 end;
 
 procedure TFormMain.trkMaxSpeedTracking(Sender: TObject);

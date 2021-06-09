@@ -1,13 +1,16 @@
 object FormMain: TFormMain
-  Left = 0
-  Top = 0
+  Left = 443
+  Top = 131
   Caption = 'Part'#237'culas'
   ClientHeight = 544
   ClientWidth = 733
+  Position = Designed
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   OnCreate = FormCreate
+  Left = 443
+  Top = 131
   DesignerMasterStyle = 0
   object lytMesh: TLayout
     Align = Client
@@ -49,7 +52,7 @@ object FormMain: TFormMain
       Margins.Top = 5.000000000000000000
       Margins.Bottom = 5.000000000000000000
       Position.X = 10.000000000000000000
-      Position.Y = 315.000000000000000000
+      Position.Y = 375.000000000000000000
       Size.Width = 229.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
@@ -88,7 +91,7 @@ object FormMain: TFormMain
       Size.Width = 229.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 3
+      TabOrder = 4
       object lbDistance: TLabel
         Align = Bottom
         Position.X = 10.000000000000000000
@@ -127,7 +130,7 @@ object FormMain: TFormMain
       Size.Width = 229.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 4
+      TabOrder = 5
       object lbMaxSpeed: TLabel
         Align = Bottom
         Position.X = 10.000000000000000000
@@ -166,7 +169,7 @@ object FormMain: TFormMain
       Size.Width = 229.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 7
+      TabOrder = 8
       object trkParticles: TTrackBar
         Align = Bottom
         CanParentFocus = True
@@ -205,7 +208,7 @@ object FormMain: TFormMain
       Size.Width = 229.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 6
+      TabOrder = 7
       object lbSpeed: TLabel
         Align = Bottom
         Position.X = 10.000000000000000000
@@ -244,7 +247,7 @@ object FormMain: TFormMain
       Size.Width = 229.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 2
+      TabOrder = 3
       object lbThickness: TLabel
         Align = Bottom
         Position.X = 10.000000000000000000
@@ -268,6 +271,46 @@ object FormMain: TFormMain
         TabOrder = 0
         Value = 1.000000000000000000
         OnTracking = trkThicknessTracking
+      end
+    end
+    object Layout1: TLayout
+      Align = Top
+      Padding.Left = 10.000000000000000000
+      Padding.Top = 10.000000000000000000
+      Padding.Right = 10.000000000000000000
+      Padding.Bottom = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Bottom = 5.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 315.000000000000000000
+      Size.Width = 229.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object lbGravity: TLabel
+        Align = Bottom
+        Position.X = 10.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'Acceleration: 1'
+        TabOrder = 1
+      end
+      object trkGravity: TTrackBar
+        Align = Bottom
+        CanParentFocus = True
+        Max = 10.000000000000000000
+        Min = -10.000000000000000000
+        Orientation = Horizontal
+        Position.X = 10.000000000000000000
+        Position.Y = 21.000000000000000000
+        Size.Width = 209.000000000000000000
+        Size.Height = 19.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Value = 1.000000000000000000
+        OnTracking = trkGravityTracking
       end
     end
   end
